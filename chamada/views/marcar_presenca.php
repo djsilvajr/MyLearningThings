@@ -15,7 +15,7 @@
 ?>
 
 <div class="ui secondary pointing menu">
-  <a class="active item" href="./index.php">
+  <a class="active item" href="../index.php">
     Turmas
   </a>
   <div class="right menu">
