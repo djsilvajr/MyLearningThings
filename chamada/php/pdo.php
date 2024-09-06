@@ -1,8 +1,5 @@
 <?php
 
-namespace App\Database;
-use \PDO;
-
 class Database {
     private $host = '185.213.81.205';  // Endereço do servidor MySQL
     private $db = 'u856874239_learningThings';  // Nome do banco de dados
