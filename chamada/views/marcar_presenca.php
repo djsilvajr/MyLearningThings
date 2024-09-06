@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chamada</title>
-    <link rel="stylesheet" href="../Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" href="../../Semantic-UI-CSS-master/semantic.min.css">
 </head>
 <body>
 
 <?php
-    include './php/turmas_lista.php';
+    include '../php/turmas_lista.php';
+    $id_turma = $_GET['id_turma'];
+
 ?>
 
 <div class="ui secondary pointing menu">
@@ -29,18 +31,22 @@
             Sistema para executar chamada
         </div>
         <ul class="list">
-            <li>Você pode marcar sua presença através deste site</li>
-            <li>Para marca chamada será necessário um código passado pelo professor</li>
-            <li>Por favor utilizar com consciência a lista de chamada, caso seja utilizado para marcar presença de outra pessoa, isso poderá ser identificado</li>
+            <li>Os alunos presentes apareceram nesta tabela, para marcar presença clique no botão "marcar presença", selecione seu nome e marque presença</li>
         </ul>
     </div>
+
+
+
+    <h1>Alunos presentes</h1> 
+    <button class="ui primary button" onclick="listarAlunos()">
+        Marcar presença
+    </button>
     <table class="ui very basic table" style="margin-top: 40px;">
     <thead>
         <tr>
-            <th>Turma</th>
-            <th>Periodo</th>
-            <th>Dias</th>
-            <th>Chamada</th>
+            <th>Nome</th>
+            <th>Dia</th>
+            <th>Presença</th>
         </tr>
     </thead>
     <tbody>
@@ -51,24 +57,30 @@
             <tr>
                 <td> <?php echo $value["turma"] ?></td>
                 <td> <?php echo $value["periodo"] ?></td>
-                <td> <?php echo $value["dias"] ?></td>
-                <td> <a href="./views/marcar_presenca.php?id_turma=<?php echo $value['id_turma'] ?>">
-                        <span class="marcarPresencaBtn" style="cursor:pointer"> 
-                            Marcar presença <i style="margin-left: 5px;" class="list ol icon large"></i> 
-                        </span>
-                    </a>
-                </td>
+                <td> <i style="color: green;" class="check square outline icon large"></i> </td>
             </tr>
         <?php
             }
         ?>
-        
 
         </tbody>
     </table>
+
+    <div class="ui fullscreen modal" id="modalAlunos">
+        <div class="header">Header</div>
+            <div class="content">
+                <p></p>
+            </div>
+            <div class="actions">
+                <div class="ui cancel button" onclick="fecharModal()">Fechar</div>
+            </div>
+    </div>
 </div>
 </body>
 </html>
+
+
+
 
 <style>
     .marcarPresencaBtn{
@@ -79,13 +91,17 @@
     }
 </style>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="../Semantic-UI-CSS-master/semantic.min.js"></script>
+<script src="../../Semantic-UI-CSS-master/semantic.min.js"></script>
+<script src="../../Semantic-UI-CSS-master/semantic.js"></script>
 
 <script>
-    function lsitarChamada(id){
-        console.log(id)
+    function listarAlunos(){
+        console.log("teste")
+        $('#modalAlunos').modal('show');
+    }
+    function fecharModal(){
+        $('.ui.modal').modal('close');
     }
 </script>
 
